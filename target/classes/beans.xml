@@ -8,16 +8,13 @@
 	<context:annotation-config />
 
 	<!-- beans simples -->
-	<bean id="springQuizMaster" class="com.stepinfo.SpringQuizMaster">
-		<constructor-arg type="Integer" value="14">
-		</constructor-arg>
-	</bean>
+	<bean id="springQuizMaster" class="com.stepinfo.SpringQuizMaster" />
 	<bean id="strutsQuizMaster" class="com.stepinfo.StrutsQuizMaster" />
 
 	<!-- beans avec injection -->
 	<bean id="beanQuizService" class="com.stepinfo.QuizMasterService">
 		<property name="quizMaster">
-			<ref local="springQuizMaster" />
+			<ref local="strutsQuizMaster" />
 		</property>
 	</bean>
 

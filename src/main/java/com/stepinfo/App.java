@@ -13,10 +13,13 @@ public class App
 {
     public static void main( String[] args )
     {
-    	final Logger logService =  LoggerFactory.getLogger(App.class);
+    	Logger loggerService = LoggerFactory.getLogger(App.class);
+    	loggerService.info("Hello World");
+    	loggerService.debug("Debug Hello World -----------------");
+
     	
-    	logService.info("App : main QuizMaster (info)");
-    	logService.debug("App : main QuizMaster (debug)");
+//    	logService.info("App : main QuizMaster (info)");
+//    	logService.debug("App : main QuizMaster (debug)");
     	
 
     	// Création du service sans Spring
@@ -29,14 +32,14 @@ public class App
     	
     	// Service crée avec Spring
     	ApplicationContext appContext = new ClassPathXmlApplicationContext("beans.xml");
-    	QuizMasterService quizService = (QuizMasterService)appContext.getBean("componentQuizMasterService");
+    	QuizMasterService quizService = (QuizMasterService)appContext.getBean("beanQuizService");
     	
-    	// SpringQuizMaster springQm = (SpringQuizMaster)appContext.getBean("springQuizMaster");
+    	SpringQuizMaster springQm = (SpringQuizMaster)appContext.getBean("springQuizMaster");
     	
     	quizService.poserQuestion();
     	
     	// Accès à un bean spring simple
-    	// System.out.print(springQm.parentQuestion());
+    	System.out.print(springQm.popQuestion());
        
     }
 }

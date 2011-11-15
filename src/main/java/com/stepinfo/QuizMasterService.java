@@ -3,10 +3,10 @@ package com.stepinfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("beanQuizService")
+//@Component("beanQuizService")
 public class QuizMasterService {
 
-	@Autowired
+//	@Autowired
 	private ParentQuizMaster quizMaster;
 	
 //	public QuizMasterService(ParentQuizMaster quizMaster) {

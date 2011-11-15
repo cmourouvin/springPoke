@@ -19,7 +19,7 @@
     <property name="basedir" value="/home/stepinfo/training/projects/wsSts/test"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="surefire.real.class.path" value="/home/stepinfo/training/projects/wsSts/test/target/surefire/surefirebooter5098202615154437266.jar"/>
+    <property name="surefire.real.class.path" value="/home/stepinfo/training/projects/wsSts/test/target/surefire/surefirebooter9109290284508429293.jar"/>
     <property name="java.io.tmpdir" value="/tmp"/>
     <property name="line.separator" value="
 "/>
@@ -42,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-6-sun-1.6.0.26/jre"/>
-    <property name="sun.java.command" value="/home/stepinfo/training/projects/wsSts/test/target/surefire/surefirebooter5098202615154437266.jar /home/stepinfo/training/projects/wsSts/test/target/surefire/surefire7630382137129164946tmp /home/stepinfo/training/projects/wsSts/test/target/surefire/surefire2033895692493251044tmp"/>
+    <property name="sun.java.command" value="/home/stepinfo/training/projects/wsSts/test/target/surefire/surefirebooter9109290284508429293.jar /home/stepinfo/training/projects/wsSts/test/target/surefire/surefire6621815552783525569tmp /home/stepinfo/training/projects/wsSts/test/target/surefire/surefire1524213449894379309tmp"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="fr"/>
     <property name="java.vm.info" value="mixed mode"/>
