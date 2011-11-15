@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<context:component-scan base-package="com.stepinfo" />
+	<context:annotation-config />
+
+	<!-- beans simples -->
+	<bean id="springQuizMaster" class="com.stepinfo.SpringQuizMaster">
+		<constructor-arg type="Integer" value="14">
+		</constructor-arg>
+	</bean>
+	<bean id="strutsQuizMaster" class="com.stepinfo.StrutsQuizMaster" />
+
+	<!-- beans avec injection -->
+	<bean id="beanQuizService" class="com.stepinfo.QuizMasterService">
+		<property name="quizMaster">
+			<ref local="springQuizMaster" />
+		</property>
+	</bean>
+
+</beans>
