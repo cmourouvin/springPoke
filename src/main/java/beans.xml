@@ -5,11 +5,28 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
 	<context:component-scan base-package="com.stepinfo" />
+	<context:component-scan base-package="com.classtest" />
 	<context:annotation-config />
+
+	<!-- Bean pour la persistance -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:mem:." />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+	</bean>
+	
+<!-- 	<bean id="abstractJdbcDao" abstract="true" class="org.springframework.jdbc.core.support.JdbcDaoSupport"> -->
+<!--         <property name="dataSource" ref="dataSource"/> -->
+<!--     </bean> -->
+<!--     <bean id="customerDao" class="JdbcCustomerDao" parent="abstractJdbcDao"/> -->
 
 	<!-- beans simples -->
 	<bean id="springQuizMaster" class="com.stepinfo.SpringQuizMaster" />
 	<bean id="strutsQuizMaster" class="com.stepinfo.StrutsQuizMaster" />
+	<bean id="mySingleton" class="com.classtest.SingletonTest"
+		init-method="initIt" destroy-method="cleanUp" scope="singleton" />
 
 	<!-- beans avec injection -->
 	<bean id="beanQuizService" class="com.stepinfo.QuizMasterService">
