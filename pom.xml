@@ -53,6 +53,13 @@
 			<version>1.4</version>
 		</dependency>
 
+		<!-- MySQL database driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.5</version>
+		</dependency>
+
 		<!-- Différentes implémentations pour le logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

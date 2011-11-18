@@ -1,0 +1,10 @@
+-- Création et initialisation de la base de données
+--
+
+CREATE TABLE  `cem`.`personne` (
+  `ID` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `NOM` VARCHAR(20) NOT NULL,
+  `PRENOM` VARCHAR(40) NOT NULL,
+  `AGE` INTEGER NOT NULL,
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

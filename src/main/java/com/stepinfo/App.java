@@ -14,6 +14,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.classtest.SingletonTest;
+import com.persistence.Personne;
 
 /**
  * Hello world!
@@ -54,7 +55,12 @@ public class App
     	QuizMasterService quizService2 = (QuizMasterService)appContext.getBean("beanQuizService");
     	
     	SpringQuizMaster springQm = (SpringQuizMaster)appContext.getBean("springQuizMaster");
-  
+    	
+    	Personne pers = (Personne)appContext.getBean("personne");
+    	Personne pers2 = (Personne)appContext.getBean("componentPersonne");
+    	Personne personne2 = (Personne)appContext.getBean("personne2");
+    	Personne personne3 = (Personne)appContext.getBean("personne3");
+
     	System.out.println("quizService 1 hash : " + quizService.hashCode());
     	System.out.println("quizService 2 hash : " + quizService2.hashCode() );
     	quizService.poserQuestion();
@@ -69,6 +75,17 @@ public class App
     	System.out.println("Count singleton from 1 : " + sing1.nbInstance());
     	SingletonTest sing3 = SingletonTest.getInstance();
     	System.out.println("Count singleton from 3 : " + sing3.nbInstance());
+    	
+    	pers.setAge(19);
+    	pers.setNom("Mourouvin");
+    	pers.setPrenom("Cédric");
+    	pers.setId(Long.parseLong("1"));
+    	pers2 = pers;
+    	pers.creer();
+    	pers2 = pers2.getPersonneById(Long.parseLong("1"));
+    	System.out.print(pers2);
+    	personne2.creer();
+    	personne3.creer();
 
     	// Accès à un bean spring simple
     	System.out.print(springQm.popQuestion());

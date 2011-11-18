@@ -6,17 +6,17 @@
 
 	<context:component-scan base-package="com.stepinfo" />
 	<context:component-scan base-package="com.classtest" />
+	<context:component-scan base-package="com.persistence" />
 	<context:annotation-config />
 
 	<!-- Bean pour la persistance -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-		<property name="url" value="jdbc:hsqldb:mem:." />
-		<property name="username" value="sa" />
-		<property name="password" value="" />
-	</bean>
-	
+<!-- 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" -->
+<!-- 		destroy-method="close"> -->
+<!-- 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" /> -->
+<!-- 		<property name="url" value="jdbc:hsqldb:mem:." /> -->
+<!-- 		<property name="username" value="sa" /> -->
+<!-- 		<property name="password" value="" /> -->
+<!-- 	</bean> -->
 <!-- 	<bean id="abstractJdbcDao" abstract="true" class="org.springframework.jdbc.core.support.JdbcDaoSupport"> -->
 <!--         <property name="dataSource" ref="dataSource"/> -->
 <!--     </bean> -->
@@ -27,7 +27,22 @@
 	<bean id="strutsQuizMaster" class="com.stepinfo.StrutsQuizMaster" />
 	<bean id="mySingleton" class="com.classtest.SingletonTest"
 		init-method="initIt" destroy-method="cleanUp" scope="singleton" />
-
+	
+	<bean id="PersonneDAO" class="com.stepinfo.dao.beans.PersonneDAO"/>
+	<bean id="personne" class="com.persistence.Personne" />
+	
+	<bean id="personne2" class="com.persistence.Personne">
+		<property name="nom" value="HUBERT" />
+		<property name="prenom" value="Jean-Pierre" />
+		<property name="age" value="34" />
+	</bean>
+	
+	<bean id="personne3" class="com.persistence.Personne" >
+		<property name="nom" value="DUPONT AIGNAN" />
+		<property name="prenom" value="Nicolas" />
+		<property name="age" value="34" />
+	</bean>
+	
 	<!-- beans avec injection -->
 	<bean id="beanQuizService" class="com.stepinfo.QuizMasterService">
 		<property name="quizMaster">
