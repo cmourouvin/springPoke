@@ -1,10 +1,8 @@
 package com.stepinfo;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +11,11 @@ import org.slf4j.MarkerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+
 import com.classtest.SingletonTest;
 import com.persistence.Personne;
+import com.stepinfo.dao.CustomerDAO;
+import com.stepinfo.dao.beans.Customer;
 
 /**
  * Hello world!
@@ -33,12 +34,9 @@ public class App
     	loggerService.error(fatal,"Error");
     	loggerService.warn("warn");
     	loggerService.debug("Debug Hello World {}","LOGS");
-
-
     	
 //    	logService.info("App : main QuizMaster (info)");
 //    	logService.debug("App : main QuizMaster (debug)");
-    	
 
     	// Création du service sans Spring
     	
@@ -76,20 +74,32 @@ public class App
     	SingletonTest sing3 = SingletonTest.getInstance();
     	System.out.println("Count singleton from 3 : " + sing3.nbInstance());
     	
-    	pers.setAge(19);
-    	pers.setNom("Mourouvin");
-    	pers.setPrenom("Cédric");
-    	pers.setId(Long.parseLong("1"));
-    	pers2 = pers;
-    	pers.creer();
-    	pers2 = pers2.getPersonneById(Long.parseLong("1"));
-    	System.out.print(pers2);
-    	personne2.creer();
-    	personne3.creer();
+//    	pers.setAge(19);
+//    	pers.setNom("Mourouvin");
+//    	pers.setPrenom("Cédric");
+//    	pers.setId(Long.parseLong("1"));
+//    	pers2 = pers;
+//    	pers.creer();
+//    	pers2 = pers2.getPersonneById(Long.parseLong("1"));
+//    	System.out.print(pers2);
+//    	personne2.creer();
+//    	personne3.creer();
+    	
+    	// utilisation de Spring DAO avec JDBC
+    	CustomerDAO customerDAO = (CustomerDAO)appContext.getBean("customerDAO");
+    	Customer cus = new Customer();
+    	int nbElement = customerDAO.getMaxId();
+//    	cus.setCustId(nbElement);
+    	cus.setAge(20+(nbElement*10)%5);
+    	cus.setName("DAOCUSTOMER"+nbElement);
+    	customerDAO.insert(cus);
+    	
+    		// Récupération de ce nouveau ustomer
+    	Customer cusInsert = customerDAO.findByCustomerId(1);
+    	System.out.print("Customer 1 : " + cusInsert);
 
     	// Accès à un bean spring simple
     	System.out.print(springQm.popQuestion());
-    	
 
     	loggerService.info("End : spring poke");
        

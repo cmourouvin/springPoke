@@ -8,6 +8,15 @@
 	<name>test</name>
 	<url>http://maven.apache.org</url>
 
+	<!-- Dépot Jboss pour Hi -->
+	<repositories>
+		<repository>
+			<id>repository.jboss.org-public</id>
+			<name>JBoss repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public</url>
+		</repository>
+	</repositories>
+
 	<properties>
 		<spring.version>3.0.5.RELEASE</spring.version>
 	</properties>
@@ -39,12 +48,29 @@
 			<version>${spring.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.6.0.Final</version>
+		</dependency>
+
+		<!-- <dependency> -->
+		<!-- <groupId>hibernate</groupId> -->
+		<!-- <artifactId>hibernate3</artifactId> -->
+		<!-- <version>3.2.3.GA</version> -->
+		<!-- </dependency> -->
 
 		<!-- Gestion et utilisation d'un BD -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-dao</artifactId>
 			<version>2.0.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>2.0.6</version>
 		</dependency>
 
 		<dependency>

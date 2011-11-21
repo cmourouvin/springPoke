@@ -2,6 +2,8 @@ package com.stepinfo.dao.beans;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
+
 
 import com.persistence.Personne;
 import com.stepinfo.dao.ObjectDAO;
@@ -37,10 +39,11 @@ public class PersonneDAO extends ObjectDAO<Personne> {
 				+ Personne.class);
 
 		try {
-			ResultSet result = this.connect.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_UPDATABLE).executeQuery(
-					"INSERT INTO personne VALUE (?,?,?)");
+			PreparedStatement stmt = this.connect.prepareStatement("INSERT INTO personne VALUE (?,?,?)");
+			stmt.setString(1,obj.getNom());
+			stmt.setString(2,obj.getPrenom());
+			stmt.setInt(3,obj.getAge());
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -60,7 +60,6 @@ public class Personne {
 	
 	public void creer() {
 		dao.create(this);
-		// dao.create(this.getClass())
 	}
 	
 	// Méthodes divers

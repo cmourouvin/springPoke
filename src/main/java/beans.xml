@@ -4,10 +4,17 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
+	<import resource="spring-datasource.xml" />
+
 	<context:component-scan base-package="com.stepinfo" />
 	<context:component-scan base-package="com.classtest" />
 	<context:component-scan base-package="com.persistence" />
 	<context:annotation-config />
+
+	<!-- Utilisation d'un dataSource pour MySQL -->
+	<bean id="customerDAO" class="com.stepinfo.dao.beans.JdbcCustomerDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
 	<!-- Bean pour la persistance -->
 <!-- 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" -->
@@ -17,32 +24,34 @@
 <!-- 		<property name="username" value="sa" /> -->
 <!-- 		<property name="password" value="" /> -->
 <!-- 	</bean> -->
-<!-- 	<bean id="abstractJdbcDao" abstract="true" class="org.springframework.jdbc.core.support.JdbcDaoSupport"> -->
-<!--         <property name="dataSource" ref="dataSource"/> -->
-<!--     </bean> -->
-<!--     <bean id="customerDao" class="JdbcCustomerDao" parent="abstractJdbcDao"/> -->
+<!-- 	<bean id="abstractJdbcDao" abstract="true" -->
+<!-- 		class="org.springframework.jdbc.core.support.JdbcDaoSupport"> -->
+<!-- 		<property name="dataSource" ref="dataSource" /> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="customerDao" class="JdbcCustomerDao" parent="abstractJdbcDao" /> -->
 
 	<!-- beans simples -->
 	<bean id="springQuizMaster" class="com.stepinfo.SpringQuizMaster" />
 	<bean id="strutsQuizMaster" class="com.stepinfo.StrutsQuizMaster" />
 	<bean id="mySingleton" class="com.classtest.SingletonTest"
 		init-method="initIt" destroy-method="cleanUp" scope="singleton" />
-	
-	<bean id="PersonneDAO" class="com.stepinfo.dao.beans.PersonneDAO"/>
+
+	<bean id="PersonneDAO" class="com.stepinfo.dao.beans.PersonneDAO" />
 	<bean id="personne" class="com.persistence.Personne" />
-	
+
 	<bean id="personne2" class="com.persistence.Personne">
 		<property name="nom" value="HUBERT" />
 		<property name="prenom" value="Jean-Pierre" />
 		<property name="age" value="34" />
 	</bean>
-	
-	<bean id="personne3" class="com.persistence.Personne" >
+
+	<bean id="personne3" class="com.persistence.Personne">
 		<property name="nom" value="DUPONT AIGNAN" />
 		<property name="prenom" value="Nicolas" />
 		<property name="age" value="34" />
 	</bean>
-	
+
 	<!-- beans avec injection -->
 	<bean id="beanQuizService" class="com.stepinfo.QuizMasterService">
 		<property name="quizMaster">
